@@ -2,7 +2,7 @@
 import requests
 
 # scripts
-import rendering
+import player_card
 
 def get_player_name() -> str:
     print('> Input a player name')
