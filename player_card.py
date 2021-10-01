@@ -25,29 +25,12 @@ def render(data: dict):
     draw.text((center - 7, top - 7), text, (255, 195, 30), font=user_font, anchor="ma")
 
     # Draw data
-    text: str = str(data.get('tr'))
-    draw.text((left, data_top), 'TR', (255, 255, 255), font=data_font, anchor="la")
-    draw.text((left - 7, data_top - 7), 'TR', (255, 195, 30), font=data_font, anchor="la")
-    draw.text((right, data_top), text, (255, 255, 255), font=data_font, anchor="ra")
-    data_top += 150
-
-    text: str = str(data.get('pps'))
-    draw.text((left, data_top), 'PPS', (255, 255, 255), font=data_font, anchor="la")
-    draw.text((left - 7, data_top - 7), 'PPS', (255, 195, 30), font=data_font, anchor="la")
-    draw.text((right, data_top), text, (255, 255, 255), font=data_font, anchor="ra")
-    data_top += 150
-
-    text: str = str(data.get('apm'))
-    draw.text((left, data_top), 'APM', (255, 255, 255), font=data_font, anchor="la")
-    draw.text((left - 7, data_top - 7), 'APM', (255, 195, 30), font=data_font, anchor="la")
-    draw.text((right, data_top), text, (255, 255, 255), font=data_font, anchor="ra")
-    data_top += 150
-
-    text: str = str(data.get('vs'))
-    draw.text((left, data_top), 'VS', (255, 255, 255), font=data_font, anchor="la")
-    draw.text((left - 7, data_top - 7), 'VS', (255, 195, 30), font=data_font, anchor="la")
-    draw.text((right, data_top), text, (255, 255, 255), font=data_font, anchor="ra")
-    data_top += 150
-
+    data_elements = ['tr', 'pps', 'apm', 'vs']
+    for elem in data_elements:
+        text: str = str(data.get(elem))
+        draw.text((left, data_top), elem.upper(), (255, 255, 255), font=data_font, anchor="la")
+        draw.text((left - 7, data_top - 7), elem.upper(), (255, 195, 30), font=data_font, anchor="la")
+        draw.text((right, data_top), text, (255, 255, 255), font=data_font, anchor="ra")
+        data_top += 150
 
     img.save("text.png")

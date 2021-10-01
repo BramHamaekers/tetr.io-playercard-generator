@@ -27,18 +27,20 @@ def is_valid_request(json: dict) -> bool:
 
 # avatar revision for avatars maybe?
 def get_card_data(json: dict):
-    user: dict = json['data']['user']
-    league: dict = user['league']
+    user: dict = json['data'].get('user')
+    league: dict = user.get('league')
 
-    username: str = user['username']
-    country: str = user['country']
-    rank: str = league['rank']
-    tr: int = round(league['rating'], 2)
-    pps: int = league['pps']
-    apm: int = league['apm']
-    vs: int = league['vs']
+    username: str = user.get('username')
+    id: str = user.get('_id')
+    avatar_id: str = user.get('avatar_revision')
+    country: str = user.get('country')
+    rank: str = league.get('rank')
+    tr: int = round(league.get('rating'), 2)
+    pps: int = league.get('pps')
+    apm: int = league.get('apm')
+    vs: int = league.get('vs')
 
-    player_card_data: dict = {'username': username, 'country': country, 'rank': rank,
+    player_card_data: dict = {'username': username, 'id': id, 'avatar': avatar_id, 'country': country, 'rank': rank,
                               'tr': tr, 'pps': pps, 'apm': apm, 'vs': vs}
 
     return player_card_data
