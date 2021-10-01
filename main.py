@@ -41,7 +41,7 @@ def get_card_data(json: dict):
     player_card_data: dict = {'username': username, 'country': country, 'rank': rank,
                               'tr': tr, 'pps': pps, 'apm': apm, 'vs': vs}
 
-    print(player_card_data)
+    return player_card_data
 
 
 def main():
@@ -54,7 +54,8 @@ def main():
         main()
         return
 
-    get_card_data(p_json)
+    data = get_card_data(p_json)
+    player_card.render(data)
 
 
 if __name__ == '__main__':
